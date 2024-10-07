@@ -76,8 +76,7 @@
           var TastyCashFormDataString = keyValuePairs.join("&");
   
           // Send a POST request to your Google Apps Script
-          fetch(
-            "https://script.google.com/macros/s/AKfycbzvjeKOcmKZ8vJ16xJ2XQFM57PaLRUNUl4-BGxuQY926BoSeIEyezITMVI6w3pUWFPe/exec",
+          fetch('https://cors-anywhere.herokuapp.com/'+'https://script.google.com/macros/s/AKfycbzvjeKOcmKZ8vJ16xJ2XQFM57PaLRUNUl4-BGxuQY926BoSeIEyezITMVI6w3pUWFPe/exec',
             {
               method: "POST",
               body: TastyCashFormData,
