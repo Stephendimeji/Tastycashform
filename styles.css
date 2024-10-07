@@ -1,0 +1,148 @@
+
+
+body{
+
+    display:block;
+    height: 160vh;
+    background: linear-gradient(135deg,#ffff 1%, #0f6f64 100%);
+
+}
+.heading{
+    margin: 0.7em auto;
+    text-align: center;
+    align-items: center;
+    font-size: 0.5rem;
+    font-family: "gills sans nova", sans-serif;
+    
+} 
+
+form{
+    align-items: center;
+    width:100vw;
+    max-width: 500px;
+    min-width:300px;
+    margin:15px auto;
+    background-color: #ffff;
+    border-radius: 8px;
+    padding: 50px auto;
+    margin-bottom:8px;
+}
+
+fieldset{
+    border: none;
+    margin-top: 10px;
+}
+
+.staff-details{
+    display:grid;
+    gap:20px;
+    padding-left: 20px;
+    margin-top: 30px;
+}
+.cash{
+    padding-left: 20px;
+    margin-top: 1px;
+}
+.branch-details{
+    display:grid;
+    gap:10px;
+    padding-left: 20px;
+    margin-top: 30px;}
+
+
+form .staff-details input{
+    position:relative;
+    height: 40px;
+    width:80%;
+    margin-top:8px;
+    border-radius: 6px;
+    padding: 0 15px;
+    outline:none;
+    border: 1px solid #348b81
+}
+form .cash input{
+    position:relative;
+    height: 40px;
+    width:80%;
+    margin-top:8px;
+    border-radius: 6px;
+    padding: 0 15px;
+    outline:none;
+    border: 1px solid #348b81
+   
+
+}
+
+.branch-details input[type="radio"]:checked::after {
+background-color: #348b81;
+content:"";
+}
+
+.branch-details label{
+    column-gap: 40px;
+    align-items: center;
+    display:inline-table;
+}
+
+h3{
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+
+form .submit input{
+width:100%;
+height:40px;
+padding:20px 10px;
+align-items: center;
+text-align: center;
+cursor:pointer;
+background-color: rgb(100, 150, 96);
+font-size: 1em;
+font-family:"gills sans nova",sans-serif;
+border-radius: 11px;
+border-color: rgb(100, 150, 96);
+position: relative;
+outline:none;
+}
+form .submit input:hover{
+background-color: rgb(156, 207, 151);
+transition: all ease 1.00s;
+}
+
+input[type="submit"]{
+    text-align: center;
+    line-height: 5px;
+}
+
+input[type="radio"]{
+    margin: 8px 8px;
+    vertical-align: -2px;
+    column-gap: 40px;
+    cursor: pointer;
+    align-items: center;
+    display:inline-table;
+}
+
+.tasty-logo{
+    width:75px;
+    height: auto;
+    margin: 1em 0 0 0.4em;
+}
+
+@media screen and (max-width: 400px){
+
+    form{
+        flex-wrap: wrap;
+    }
+
+    .tasty-logo{
+        width:75px;
+        height: auto;
+        margin: 0.5em 0 0 0.75em;}
+    
+    body{
+        display:block;
+    height: 165vh;
+    background: linear-gradient(135deg,#ffff 1%, #0f6f64 100%); }
+}

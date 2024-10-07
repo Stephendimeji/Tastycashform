@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASTY REMUNERATION FORM</title>
+    <link href="styles.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="tasty-logo">
+        <a href="/Iindex.html" target="-blank">
+            <img src="images/Tasty__Full_Logo_-_Dark_Green_3e7328f3-7ebd-4200-b339-f1d711468b2f_200x.avif" class="tasty-logo" alt="Tasty-logo">
+        </a> 
+    </div>
+    <div class="heading">
+        <h1>TASTY RENUMERATION FORM</h1>
+    </div>
+    
+    <form id="TastyCashForm">
+        <fieldset>
+            <h3>Staff Details</h3>
+            <div class="staff-details">
+                <label for="first-name">ENTER YOUR FIRST NAME: <input id="first-name" type="text" required placeholder="First Name"/></label>
+                <label for="Last-name">ENTER YOUR LAST NAME: <input id="Last-name" type="text" required placeholder="Last Name"/></label>
+                <label for="first-name">SELECT DATE: <input id="Date" type="date" required/></label>
+            </div>
+        </fieldset>
+        <fieldset>
+            <h3>Select Branch</h3>
+            <div class="branch-details">
+
+                <label for="Branch-Name"><input id="Branch-barking" type="radio" name="Branch-name" checked/>Barking</label>
+                <label for="Branch-Name"><input id="Branch-ilford" type="radio" name="Branch-name"/>Ilford</label>
+                <label for="Branch-Name"><input id="Branch-woolwich1" type="radio" name="Branch-name"/>Woolwich 1</label>
+                <label for="Branch-Name"><input id="Branch-woolwich2" type="radio" name="Branch-name"/>Woolwich 2</label>
+                <label for="Branch-Name"><input id="Branch-belvedere" type="radio" name="Branch-name"/>Belvedere</label>
+                <label for="Branch-Name"><input id="Branch-dartford" type="radio" name="Branch-name"/>Dartford</label>
+                <label for="Branch-Name"><input id="Branch-croydon" type="radio" name="Branch-name"/>Croydon</label>
+                <label for="Branch-Name"><input id="Branch-gravesend" type="radio" name="Branch-name"/>Gravesend</label>
+                <label for="Branch-Name"><input id="Branch-stratford" type="radio" name="Branch-name"/>Stratford</label>
+                <label for="Branch-Name"><input id="Branch-sittingborne" type="radio" name="Branch-name"/>Sittingborne</label>
+            </div>    
+        </fieldset>
+         <fieldset>
+            <h3>Cash Amount</h3>
+            <div class="cash">
+                <label for="cash"> CASH AMOUNT: <input id="cash" type="number" min="0" name="cash" step="0.01" placeholder="0.00" required></label>
+            </div>
+         </fieldset>   
+         <fieldset>
+           
+            <div class="submit" >
+                <input type="submit" id="submit-button" value="SUBMIT">
+            </div>
+            
+         </fieldset>
+         
+    </form>
+
+    <div id="message" style="display: none;"></div>
+
+    <script>
+        document.getElementById("TastyCashForm").addEventListener("submit", function (e) {
+          e.preventDefault(); // Prevent the default form submission
+          document.getElementById("message").textContent = "Submitting..";
+          document.getElementById("message").style.display = "block";
+          document.getElementById("submit-button").disabled = true;
+  
+          // Collect the form data
+          var TastyCashFormData = new FormData(this);
+          var keyValuePairs = [];
+          for (var pair of TastyCashFormData.entries()) {
+            keyValuePairs.push(pair[0] + "=" + pair[1]);
+          }
+  
+          var TastyCashFormDataString = keyValuePairs.join("&");
+  
+          // Send a POST request to your Google Apps Script
+          fetch(
+            "https://script.google.com/macros/s/AKfycbzvjeKOcmKZ8vJ16xJ2XQFM57PaLRUNUl4-BGxuQY926BoSeIEyezITMVI6w3pUWFPe/exec",
+            {
+              method: "POST",
+              body: TastyCashFormData,
+            }
+          )
+            .then(function (response) {
+              // Check if the request was successful
+              if (response) {
+                return response; // Assuming your script returns JSON response
+              } else {
+                throw new Error("Failed to submit the form.");
+              }
+            })
+            .then(function (data) {
+              // Display a success message
+              document.getElementById("message").textContent =
+                "Data submitted successfully!";
+              document.getElementById("message").style.display = "block";
+              document.getElementById("message").style.backgroundColor = "green";
+              document.getElementById("message").style.color = "beige";
+              document.getElementById("submit-button").disabled = false;
+              document.getElementById("TastyCashForm").reset();
+  
+              setTimeout(function () {
+                document.getElementById("message").textContent = "";
+                document.getElementById("message").style.display = "none";
+              }, 2600);
+            })
+            .catch(function (error) {
+              // Handle errors, you can display an error message here
+              console.error(error);
+              document.getElementById("message").textContent =
+                "An error occurred while submitting the form.";
+              document.getElementById("message").style.display = "block";
+            });
+        });
+    </script>
+  
+   
+</body>
+
+</html>
